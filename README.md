@@ -7,7 +7,7 @@ Why emmental ? Take a quick look in the code, there are some `*TBW*` holes in th
 
 The goal of the task is to build a docker postgres flask environment to setup all the development application.
 
-After you are finished filling the `*TBW*` holes, you should have an API ready to be used and some managed scripts can be written to also interact (through flask_script cli) with the running container. 
+After you are finished filling the `*TBW*` holes, you should have an API ready to be used and some managed scripts can be written to also interact (through flask_script cli) with the running container.
 
 One should be able to go to your `poc-docker` branch of your repository and do successfully these commands:
 
