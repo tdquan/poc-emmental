@@ -23,13 +23,9 @@ One should be able to go to your `poc-docker` branch of your repository and do s
 
   6. `./poc python` helps to go inside an api python process and `from models.user import User;User.query.all()` returns the same user object through a sqlalchemy instance.
 
-<<<<<<< HEAD
 <p align="center">
   <img
     alt="Demo of what to expect with poc-docker"
     src="https://github.com/feedback-news/poc-emmental/blob/poc-docker/images/poc-docker.gif"
   />
 </p>
-=======
-![Alt Text](https://github.com/feedback-news/poc-emmental/blob/poc-docker/images/poc-docker.gif)
->>>>>>> gif
