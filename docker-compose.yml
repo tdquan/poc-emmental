@@ -9,6 +9,8 @@ services:
     container_name: poc-api
     depends_on:
       *TBW*
+    env_file:
+      - ./.env
     environment:
       *TBW*
     networks:

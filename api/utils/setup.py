@@ -3,6 +3,7 @@
 
 import os
 from flask_script import Manager
+from sqlalchemy_api_handler import ApiHandler
 
 from models import import_models
 from routes import import_routes
@@ -19,6 +20,7 @@ def setup(flask_app,
     *TBW*
 
     db.init_app(flask_app)
+    ApiHandler.set_db(db)
 
     *TBW*
 
