@@ -18,4 +18,6 @@ elif [[ "$CMD" == "restart" ]]; then
   *TBW*
 elif [[ "$CMD" == "start" ]]; then
   docker-compose up
+elif [[ "$CMD" == "webapp" ]]; then
+  *TBW*
 fi

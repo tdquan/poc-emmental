@@ -3,7 +3,7 @@ from sqlalchemy_api_handler import logger
 from models.appearance import Appearance
 from models.claim import Claim
 from models.content import Content
-from models.review import Review
+from models.review import Reviewt
 from models.user import User
 from utils.db import db
 
