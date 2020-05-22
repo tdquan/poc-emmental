@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Text
+from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy_api_handler import ApiHandler
 
 from utils.db import Model
@@ -6,6 +6,8 @@ from utils.db import Model
 
 class Tag(ApiHandler,
           Model):
+
+    evaluationValue = Column(Integer())
 
     info = *TBW*
 

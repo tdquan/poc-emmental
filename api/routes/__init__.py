@@ -3,6 +3,7 @@
 
 
 def import_routes():
+    import routes.tags
     import routes.verdicts
 
     import routes.health

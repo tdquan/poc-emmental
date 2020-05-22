@@ -49,6 +49,13 @@ INCLUDES = [
     }
 ]
 
+
+@app.route('/verdicts/<verdict_id>', methods=['GET'])
+def get_verdict(verdict_id):
+    verdict = load_or_404(Verdict, verdict_id)
+    return jsonify(*TBW*)
+    
+
 @app.route('/verdicts', methods=['GET'])
 def get_reviews():
     query = Verdict.query

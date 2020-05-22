@@ -1,0 +1,14 @@
+$item-wrapper-padding: 0.625rem;
+
+.items {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  margin-left: -$item-wrapper-padding;
+  margin-right: -$item-wrapper-padding;
+  margin-top: 10px;
+
+  .item-wrapper {
+    padding: $item-wrapper-padding;
+  }
+}

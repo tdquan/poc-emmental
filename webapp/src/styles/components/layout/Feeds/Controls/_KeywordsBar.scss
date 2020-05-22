@@ -1,0 +1,35 @@
+.keywords-bar {
+  display: flex;
+  height: 2rem;
+  border-color: $grey-light;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1.25rem;
+  padding-right: 0.375rem;
+
+  .keywords-input {
+    border: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    background-color: transparent;
+    height: 100%;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    font-size: 1rem;
+    font-family: Apercu;
+
+    &:focus {
+      box-shadow: none !important;
+      outline:0px !important;
+      -webkit-appearance:none;
+    }
+    ::placeholder {
+      color: $grey-light
+    }
+  }
+
+}
