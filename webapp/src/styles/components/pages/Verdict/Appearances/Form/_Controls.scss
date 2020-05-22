@@ -1,0 +1,6 @@
+.controls {
+  button[type="submit"] {
+    @extend .button;
+    @extend .is-primary;
+  }
+}

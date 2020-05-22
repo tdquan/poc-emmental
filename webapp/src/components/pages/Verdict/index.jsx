@@ -6,6 +6,7 @@ import { requestData, selectEntityByKeyAndId } from 'redux-thunk-data'
 import Header from 'components/layout/Header'
 import Main from 'components/layout/Main'
 import VerdictItem from 'components/layout/VerdictItem'
+import selectSortedAppearancesByQuotedClaimId from 'selectors/selectSortedAppearancesByQuotedClaimId'
 
 import Appearances from './Appearances'
 
@@ -16,12 +17,15 @@ export default () => {
 
   const verdict =  useSelector(state =>
     selectEntityByKeyAndId(state, 'verdicts', verdictId), [verdictId])
-  const { claim } = verdict || {}
-  const { quotedFromAppearances } = claim || {}
+  const { claimId } = verdict || {}
+  const quotedFromAppearances = useSelector(state => *TBW*)
 
 
   useEffect(() => {
-    dispatch(requestData({apiPath: `/verdicts/${verdictId}`}))
+    dispatch(requestData({
+      apiPath: `/verdicts/${verdictId}`,
+      normalizer: *TBW*
+    }))
   }, [dispatch, verdictId])
 
 

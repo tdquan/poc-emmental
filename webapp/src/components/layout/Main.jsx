@@ -1,18 +1,20 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Modal } from 'redux-react-modals'
 
 
 const _ = ({ children, className, Tag }) => (
   <Tag className={classnames('main', className)}>
+    <Modal name="main" />
     {children}
   </Tag>
 )
 
 
 _.defaultProps = {
-  className: null,
   Tag: 'main',
+  className: null
 }
 
 

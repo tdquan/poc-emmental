@@ -13,6 +13,14 @@ export default () => {
 
   const config = useMemo(() => ({
     apiPath: `/verdicts${search}`,
+    normalizer: {
+      claim: {
+        normalizer: {
+          quotedFromAppearances: 'appearances'
+        },
+        stateKey: 'claims'
+      }
+    }
   }), [search])
 
 

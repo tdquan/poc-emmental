@@ -1,3 +1,5 @@
+# pylint: disable=C0415
+# pylint: disable=W0611
 # pylint: disable=W0612
 # pylint: disable=W0613
 
@@ -10,6 +12,7 @@ from models import import_models
 from routes import import_routes
 from scripts import install_scripts
 from utils.db import db
+from utils.encoder import EnumJSONEncoder
 
 
 def setup(flask_app,
@@ -23,6 +26,8 @@ def setup(flask_app,
 
     db.init_app(flask_app)
     ApiHandler.set_db(db)
+
+    flask_app.json_encoder = EnumJSONEncoder
 
     @flask_app.teardown_request
     def remove_db_session(exc):

@@ -8,6 +8,7 @@ from models.medium import Medium
 from models.organization import Organization
 from models.user import User
 from models.verdict import Verdict
+from utils.token import create_random_password
 
 
 def appearance_from_row(row):
@@ -68,7 +69,11 @@ def author_from_row(row):
         'scienceFeedbackIdentifier': row['airtableId']
     }
 
-    return User.create_or_modify(user_dict, search_by='email')
+    user = User.create_or_modify(user_dict, search_by='email')
+    if not user.id:
+        user.set_password(create_random_password())
+
+    return user
 
 
 def claim_from_row(row):
@@ -93,8 +98,11 @@ def editor_from_row(row):
         'scienceFeedbackIdentifier': row['airtableId']
     }
 
+    user = User.create_or_modify(user_dict, search_by='email')
+    if not user.id:
+        user.set_password(create_random_password())
 
-    return User.create_or_modify(user_dict, search_by='email')
+    return user
 
 
 def outlet_from_row(row):
@@ -114,7 +122,11 @@ def reviewer_from_row(row):
         'scienceFeedbackIdentifier': row['airtableId']
     }
 
-    return User.create_or_modify(user_dict, search_by='email')
+    user = User.create_or_modify(user_dict, search_by='email')
+    if not user.id:
+        user.set_password(create_random_password())
+
+    return user
 
 
 def social_from_row(row):

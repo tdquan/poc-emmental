@@ -1,0 +1,48 @@
+.select-field {
+  .field-label {
+    color: $grey-darker;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $black;
+    font-size: 1.125rem;
+    font-weight: $font-weight-bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    margin-bottom: 0.25rem;
+    position: relative;
+
+    .field-asterisk {
+      color: $red;
+      font-size: 1.25rem;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    .field-sublabel {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      margin-top: 0.625rem;
+      height: 1rem;
+      font-size: 0.875rem;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $grey;
+    }
+  }
+
+  .field-value {
+    align-items: center;
+    display: flex;
+
+    select {
+      @extend .select;
+    }
+  }
+}

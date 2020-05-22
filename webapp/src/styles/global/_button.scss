@@ -1,0 +1,116 @@
+.button {
+  border-radius: 1.5rem;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.5;
+  min-width: 4em;
+  font-kerning: auto;
+  padding: 1rem;
+  display: block;
+  font-family: apercu;
+  text-align: center;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:not(.is-outlined) {
+    border-width: 0;
+  }
+
+  &:focus:not(:active) {
+    box-shadow: none;
+  }
+
+  &.thin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    min-width: 4em;
+    height: 2rem;
+    padding: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  &.is-loading {
+    color: transparent!important;
+    pointer-events: none;
+
+    &::after {
+      animation: spinAround .5s linear infinite;
+      -webkit-animation: spinAround .5s linear infinite;
+      border-bottom-color: $primary;
+      border-left-color: $primary;
+      border-radius: 290486px;
+      border-right-color: transparent;
+      border-style: solid;
+      border-top-color: transparent;
+      border-width: 2px;
+      content: "";
+      display: block;
+      height: 1em;
+      left: calc(50% - .5em);
+      position: absolute!important;
+      top: calc(50% - .5em);
+      width: 1em;
+    }
+  }
+
+  &.is-primary {
+    background-color: $primary;
+    border-color: transparent;
+    color: $white;
+  }
+
+  &.is-secondary {
+    background: none;
+    border-color: transparent;
+    color: $primary;
+    text-decoration: none;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.is-inversed {
+      background-color: $grey;
+      color: $white;
+      opacity: 0.25;
+    }
+  }
+
+  &.is-outlined {
+    background-color: transparent;
+    box-shadow: none;
+    color: $grey;
+  }
+
+  &.is-inner-input {
+    display: flex;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 30px;
+    min-height: 30px;
+    height: 30px !important;
+    width: 30px !important;;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  &.is-undressed {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: $primary;
+    font-weight: $font-weight-normal;
+  }
+}

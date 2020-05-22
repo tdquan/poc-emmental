@@ -1,0 +1,14 @@
+@import "Controls.scss";
+@import "Fields.scss";
+
+
+.form {
+  padding: 3rem;
+
+  .title {
+    color: $black;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+  }
+}
