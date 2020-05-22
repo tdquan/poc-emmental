@@ -1,9 +1,15 @@
+from sqlalchemy_api_handler import logger
+
+from models.appearance import Appearance
+from models.claim import Claim
+from models.content import Content
+from models.review import Review
 from models.user import User
 from utils.db import db
 
 
 def clean():
     ''' Order of deletions matters because of foreign key constraints '''
-    print('clean all the database...')
+    logger.info('clean all the database...')
     *TBW*
-    print('clean all the database...Done.')
+    logger.info('clean all the database...Done.')
