@@ -16,7 +16,7 @@
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "redux-thunk-data": "1.10.5",
+    "redux-thunk-data": "1.10.10",
     "reselect": "^4.0.0"
   },
   "devDependencies": {

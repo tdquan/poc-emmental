@@ -118,6 +118,9 @@ def reviewer_from_row(row):
 
 
 def social_from_row(row):
+    if 'url' not in row:
+        return
+
     organization_name = row['url'].replace('https://www.', '') \
                                   .split('/')[0] \
                                   .split('.')[0] \

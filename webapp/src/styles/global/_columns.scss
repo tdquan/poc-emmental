@@ -1,0 +1,198 @@
+$breakpointKeys: (
+  'gap',
+  'tablet',
+  'desktop',
+  'widescreen'
+  'fullhd'
+);
+
+$breakpointsByKey: (
+  'gap': $gap,
+  'tablet': $tablet,
+  'desktop': $desktop,
+  'widescreen': $widescreen,
+  'fullhd': $fullhd
+);
+
+@each $breakpointKey in $breakpointKeys {
+
+  $breakpoint: map-get($breakpointsByKey, $breakpointKey);
+
+  .col-#{$breakpointKey}-100,
+  .col-#{$breakpointKey}-1of1,
+  .col-#{$breakpointKey}-2of2,
+  .col-#{$breakpointKey}-3of3,
+  .col-#{$breakpointKey}-4of4,
+  .col-#{$breakpointKey}-5of5 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 100%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-80,
+  .col-#{$breakpointKey}-4of5 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 80%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-75,
+  .col-#{$breakpointKey}-3of4 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 73.5%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-66,
+  .col-#{$breakpointKey}-2of3 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 66.66%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-60,
+  .col-#{$breakpointKey}-3of5 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 59.5%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-50,
+  .col-#{$breakpointKey}-1of2,
+  .col-#{$breakpointKey}-2of4 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 50%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-40,
+  .col-#{$breakpointKey}-2of5 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 38%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-33,
+  .col-#{$breakpointKey}-1of3 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 33.33%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-25,
+  .col-#{$breakpointKey}-1of4 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 23%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-20,
+  .col-#{$breakpointKey}-1of5 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      $size: 20%;
+
+      flex: 1;
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      text-align: left;
+    }
+  }
+
+  .col-#{$breakpointKey}-0 {
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint) {
+      flex: 1;
+      width: 0;
+      min-width: 0;
+      max-width: 0;
+      text-align: left;
+    }
+  }
+}
