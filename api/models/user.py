@@ -13,4 +13,4 @@ class User(ApiHandler,
 
     firstName = *TBW*
 
-    lastName = *TBW*
+    lastName = *TB

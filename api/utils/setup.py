@@ -2,6 +2,7 @@
 # pylint: disable=W0613
 
 import os
+from flask_cors import CORS
 from flask_script import Manager
 from sqlalchemy_api_handler import ApiHandler
 
@@ -12,6 +13,7 @@ from utils.db import db
 
 
 def setup(flask_app,
+          with_cors=False,
           with_models_creation=False,
           with_scripts_manager=False,
           with_routes=False):
@@ -22,8 +24,17 @@ def setup(flask_app,
     db.init_app(flask_app)
     ApiHandler.set_db(db)
 
-    *TBW*
+    @flask_app.teardown_request
+    def remove_db_session(exc):
+        try:
+            *TBW*
+        except AttributeError:
+            pass
 
+    if with_cors:
+        *TBW*
+
+    *TBW*
     import_models(with_creation=with_models_creation)
 
     if with_routes:
