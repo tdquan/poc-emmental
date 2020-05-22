@@ -1,70 +1,31 @@
 # poc-emmental
 
-Welcome to the Feedback News challenge !
+Why emmental ? Take a quick look in the code, there are some `*TBW*` holes in the scripts... This is where critical code needs `To Be Written` to make the application working.
 
-Here is a briefing of tasks (divided into five milestone) in order to release
-one small deliverable fact-checks exploration website.
 
-Typical duration for the exercise would be ten days of work for a beginner developer
-using Docker, Postgres, Python, Flask, Redux, React. In the end, the challenger needs to share to the Feedback News team one git repository with some README and code to be tested.
+## Task 1: poc-docker
 
-## Features to develop
+The goal of the task is to build a docker postgres flask environment to setup all the development application.
 
-The application must provide:
+After you are finished filling the `*TBW*` holes, you should have an API ready to be used and some managed scripts can be written to also interact (through flask_script cli) with the running container.
 
-- i) a Flask API `http://localhost:80/reviews` that returns existing reviews in the database as JSON format,
+One should be able to go to your `poc-docker` branch of your repository and do successfully these commands:
 
-- ii) a website welcome/search page allowing users to search the reviews by keywords on `http://localhost:3000`:
+  1. `./poc start` making the docker containers run and the Flask Api to be available at localhost:80,
+
+  2. on anther shell, `curl localhost:80/health` returning a json object specifying if the database is ok but with no user data in it for now,
+
+  3. `./poc sandbox` making the app write one user in the database
+
+  4. again, `curl localhost:80/health` should now return database is okay with some users,
+
+  5. `./poc psql` helps to go inside a postgres psql process and `SELECT * from "user"` returns one object,
+
+  6. `./poc python` helps to go inside an api python process and `from models.user import User;User.query.all()` returns the same user object through a sqlalchemy instance.
+
 <p align="center">
-  <kbd>
-    <img
-      alt="reviews"
-      src="https://raw.githubusercontent.com/feedback-news/poc-emmental/master/images/reviews.png"
-    />
-  </kbd>
+  <img
+    alt="Demo of what to expect with poc-docker"
+    src="https://github.com/feedback-news/poc-emmental/blob/poc-docker/images/poc-docker.gif"
+  />
 </p>
-
-- iii) a website result page showing all the reviews containing the keyword in their titles: `http://localhost:3000?keywords=<keywords>`:  
-<p align="center">
-  <kbd>
-    <img
-      alt="reviews with keywords"
-      src="https://raw.githubusercontent.com/feedback-news/poc-emmental/master/images/reviews_with_keywords.png"
-    />
-  </kbd>
-</p>
-
-- iv) finally, a website page template for each review `http://localhost:3000/reviews/<reviewId>` listing all the instances repeating the claim or content, and all the social media accounts having spread it:
-<p align="center">
-  <kbd>
-    <img
-      alt="review"
-      src="https://raw.githubusercontent.com/feedback-news/poc-emmental/master/images/review.png"
-    />
-  </kbd>
-</p>
-
-- v) i there is still time, the application should possibly allow a form for the user to add an other appearance for one specific review, and add this appearance in the postgres database:
-<p align="center">
-  <kbd>
-    <img
-      alt="review with appearance"
-      src="https://raw.githubusercontent.com/feedback-news/poc-emmental/master/images/review_with_appearance.png"
-    />
-  </kbd>
-</p>
-
-
-## Tech tasks
-
-The challenge is split into five steps, each of these has its own branch on this repository for further explanation :
-
-  1. [poc-docker](https://github.com/feedback-news/poc-emmental/tree/poc-docker): the task is to build a docker postgres flask environment to setup all the application,
-
-  2. [poc-data](https://github.com/feedback-news/poc-emmental/tree/poc-data): once the stack is up, the database needs to be feed with real data, and all is reachable via the `/reviews` rest api,
-
-  3. [poc-react](https://github.com/feedback-news/poc-emmental/tree/poc-react): next step consists in installing a front react redux boilerplate to display roughly these review items fetched via api,
-
-  4. [poc-reviews](https://github.com/feedback-news/poc-emmental/tree/poc-reviews): this is the core task dedicated to implement the features ii), iii) iv), <i>ie</i> the website main user story,
-
-  5. [poc-form](https://github.com/feedback-news/poc-emmental/tree/poc-form): an extra task to achieve the v) feature.
