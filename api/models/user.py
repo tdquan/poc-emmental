@@ -4,7 +4,6 @@ from utils.db import Model
 
 
 class User(Model):
-
-    id = *TBW*
-
-    email = *TBW*
+  ''' store user-related details '''
+  id = Column(BigInteger, primary_key=True, autoincrement=True)
+  email = Column(String, nullable=False, unique=False)
