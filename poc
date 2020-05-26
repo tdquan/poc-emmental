@@ -3,7 +3,7 @@
 CMD="$1"
 
 if [[ "$CMD" == "build" ]]; then
-  *TBW*
+  docker-compose build
 elif [[ "$CMD" == "clean" || "$CMD" == "sandbox" ]]; then
   docker exec -it poc-api bash -c "cd /opt/api && PYTHONPATH=. python scripts/manager.py '$CMD'"
 elif [[ "$CMD" == "psql" ]]; then

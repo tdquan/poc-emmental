@@ -11,5 +11,5 @@ def sandbox():
     clean()
 
     print('create one user...')
-    *TBW*
+    print('{name} *TBW*'.format(name=__name__))
     print('create one user...Done.')

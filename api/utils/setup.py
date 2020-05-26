@@ -15,9 +15,10 @@ def setup(flask_app,
           with_scripts_manager=False,
           with_routes=False):
 
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('POSTGRES_URL')
-    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    flask_app.config['DEBUG'] = True
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    flask_app.config['ENV'] = os.environ.get('FLASK_ENV') or 'development'
+    flask_app.config['PORT'] = os.environ.get('PORT')
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = flask_app.config['ENV'] == 'production'
 
     db.init_app(flask_app)
 
