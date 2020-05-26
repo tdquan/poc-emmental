@@ -61,7 +61,7 @@ The challenge is split into five steps, each of these has its own branch on this
 
   1. [poc-docker](https://github.com/feedback-news/poc-emmental/tree/poc-docker): the task is to build a docker postgres flask environment to setup all the application,
 
-  2. [poc-data](https://github.com/feedback-news/poc-emmental/tree/poc-data): once the stack is up, the database needs to be feed with real data, and all is reachable via the `/reviews` rest api,
+  2. [poc-data](https://github.com/feedback-news/poc-emmental/tree/poc-data): once the stack is up, the database needs to be fed with real data, and all is reachable via the `/reviews` rest api,
 
   3. [poc-react](https://github.com/feedback-news/poc-emmental/tree/poc-react): next step consists in installing a front react redux boilerplate to display roughly these review items fetched via api,
 
