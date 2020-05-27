@@ -11,5 +11,12 @@ def sandbox():
     clean()
 
     print('create one user...')
-    print('{name} *TBW*'.format(name=__name__))
-    print('create one user...Done.')
+    user = User(email='foo.bar@feedback.news')
+    db.session.add(user)
+    try:
+      db.session.commit()
+      print('create one user...Done.')
+    except Exception as e:
+      print(e)
+      db.session.rollback()
+      db.session.flush()

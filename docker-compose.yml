@@ -19,6 +19,7 @@ services:
       - 80:80
     volumes:
       - ./api:/opt/api
+    restart: always
 
   apidb:
     # command:
@@ -34,6 +35,7 @@ services:
       - ./docker_data/apidb:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    restart: always
 
 networks:
   back:
