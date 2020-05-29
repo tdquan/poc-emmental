@@ -6,7 +6,6 @@ from repository.keywords import import_keywords
 
 
 def import_models(with_creation=False):
-    *TBW*
     from models.user import User
 
     if with_creation:

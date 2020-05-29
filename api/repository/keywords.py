@@ -2,9 +2,9 @@ from sqlalchemy import func, Index, TEXT
 from sqlalchemy.sql.expression import cast
 from sqlalchemy.sql.functions import coalesce
 
-from models.claim import Claim
-from models.content import Content
-from models.review import Review
+# from models.claim import Claim
+# from models.content import Content
+# from models.review import Review
 from models.user import User
 
 
@@ -16,26 +16,26 @@ def create_tsvector(*targets):
 
 
 def import_keywords():
-    Claim.__ts_vector__ = *TBW*
+    # Claim.__ts_vector__ = *TBW*
 
-    Claim.__table_args__ = *TBW*
+    # Claim.__table_args__ = *TBW*
 
-    Content.__ts_vector__ = *TBW*
+    # Content.__ts_vector__ = *TBW*
 
-    Content.__table_args__ = *TBW*
+    # Content.__table_args__ = *TBW*
 
+    # Review.__ts_vector__ = create_tsvector(
+    #     cast(coalesce(Review.comment, ''), TEXT),
+    # )
+    # Review.__table_args__ = (
+    #     Index(
+    #         'idx_review_fts',
+    #         Review.__ts_vector__,
+    #         postgresql_using='gin'
+    #     ),
+    # )
 
-    Review.__ts_vector__ = create_tsvector(
-        cast(coalesce(Review.comment, ''), TEXT),
-    )
-    Review.__table_args__ = (
-        Index(
-            'idx_review_fts',
-            Review.__ts_vector__,
-            postgresql_using='gin'
-        ),
-    )
+    # User.__ts_vector__ = *TBW*
 
-    User.__ts_vector__ = *TBW*
-
-    User.__table_args__ = *TBW*
+    # User.__table_args__ = *TBW*
+    pass

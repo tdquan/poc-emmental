@@ -4,3 +4,4 @@ flask_sqlalchemy==2.4.1
 psycopg2-binary==2.8.4
 sqlalchemy==1.3.13
 SQLAlchemy==1.3.13
+SQLAlchemy-Api-Handler==0.3.4

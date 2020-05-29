@@ -24,6 +24,6 @@ def reviews_query_from_keywords_chain(query, keywords_chain):
                  .join(User)
 
     ts_queries = ['{}:*'.format(keyword) for keyword in keywords_chain.split(' ')]
-    ts_filters = *TBW*
+    ts_filters = '*TBW*'
     query = query.filter(and_(*ts_filters))
     return query

@@ -1,2 +1,4 @@
 .env
 docker_data/
+__pycache__
+venv

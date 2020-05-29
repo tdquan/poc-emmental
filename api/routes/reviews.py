@@ -3,7 +3,7 @@ from flask import current_app as app, jsonify, request
 from sqlalchemy_api_handler import ApiHandler
 
 from models.review import Review
-from repository.reviews import reviews_query_from_keywords_chain
+# from repository.reviews import reviews_query_from_keywords_chain
 from utils.rest import listify
 
 
@@ -13,7 +13,7 @@ def get_reviews():
 
     keywords_chain = request.args.get('keywords')
     if keywords_chain is not None:
-        query = *TBW*
+        query = "*TBW*"
 
     return listify(Review,
                    includes=[

@@ -15,22 +15,30 @@ class Review(ApiHandler,
              Model,
              HasScienceFeedbackMixin):
 
-    claimId = Column(BigInteger(),
-                     ForeignKey('claim.id'),
-                     index=True)
+    claimId       = Column(BigInteger(),
+                           ForeignKey('claim.id'),
+                           index=True)
 
-    claim = relationship('Claim',
-                         foreign_keys=[claimId],
-                         backref='reviews')
+    claim         = relationship('Claim',
+                                 foreign_keys=[claimId],
+                                 backref='reviews')
 
-    contentId = *TBW*
+    contentId     = Column(BigInteger(),
+                           ForeignKey('content.id'),
+                           index=True)
 
-    content = *TBW*
+    content       = relationship('Content',
+                                 foreign_keys=[contentId],
+                                 backref='reviews')
 
-    comment = *TBW*
+    comment       = Column(Text(), nullable=False)
 
-    evaluation = *TBW*
+    evaluation    = Column(Integer(), nullable=False)
 
-    reviewerId = *TBW*
+    reviewerId    = Column(BigInteger(),
+                           ForeignKey('user.id'),
+                           index=True)
 
-    reviewer = *TBW*
+    reviewer      = relationship('User',
+                                 foreign_keys=[reviewerId],
+                                 backref='reviews')
