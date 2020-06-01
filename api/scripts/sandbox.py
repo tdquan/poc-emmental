@@ -1,7 +1,8 @@
+import traceback
+
 from flask import current_app as app
 
-
-from models.user import User
+from repository.science_feedback import sync
 from repository.clean import clean
 from utils.db import db
 
@@ -10,6 +11,9 @@ from utils.db import db
 def sandbox():
     clean()
 
-    print('create one user...')
-    *TBW*
-    print('create one user...Done.')
+    try:
+      sync()
+    except Exception as err:
+      print('ERROR: {err}:'.format(err=err))
+      print('--------')
+      traceback.print_exc()

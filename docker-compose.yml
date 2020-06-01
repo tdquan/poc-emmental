@@ -2,37 +2,49 @@ version: '3.2'
 
 services:
   api:
-    build:
-      *TBW*
-    command: >
-      *TBW*
+    build: ./api
     container_name: poc-api
+    entrypoint: ["./wait-for-it.sh", "apidb:5432", "--", "python", "app.py"]
+    # command: python app.py
     depends_on:
-      *TBW*
+      - apidb
     env_file:
       - ./.env
     environment:
-      *TBW*
+      FLASK_APP: app.py
+      FLASK_ENV: production
+      PYTHONPATH: /opt/api
+      POSTGRES_URL: postgresql://poc-user:poc-password@apidb/poc-emmental
     networks:
-      *TBW*
+      - default
     ports:
-      *TBW*
+      - 80:80
     volumes:
-      - ./api:*TBW*
+      - ./api:/opt/api
+    restart: always
 
   apidb:
-    command: *TBW*
+    # command:
     container_name: poc-apidb
     environment:
-      *TBW*
+      - POSTGRES_DB=poc-emmental
+      - POSTGRES_USER=poc-user
+      - POSTGRES_PASSWORD=poc-password
     image: postgres:10.1
     networks:
-      *TBW*
+      - default
     volumes:
-      - "./docker_data/apidb:*TBW*"
+      - ./docker_data/apidb:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
 
 networks:
-  *TBW*
+  back:
+    driver: bridge
+  db:
+    driver: bridge
 
 volumes:
+  api:
   docker_data:

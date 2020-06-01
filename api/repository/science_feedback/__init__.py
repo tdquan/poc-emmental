@@ -1,8 +1,9 @@
-import os
+import os, traceback
 from sqlalchemy_api_handler import ApiHandler, logger
 
 import repository.science_feedback.entity_from_row
 from utils.airtable import request_airtable_rows
+from utils.db import db
 
 
 SCIENCE_FEEDBACK_AIRTABLE_BASE_ID = os.environ.get('SCIENCE_FEEDBACK_AIRTABLE_BASE_ID')
@@ -37,7 +38,17 @@ def sync_for(name, max_records=None):
         if entity:
             entities.append(entity)
 
-    ApiHandler.save(*entities)
+    # ApiHandler.save(*entities)
+    try:
+        for entity in entities:
+            db.session.add(entity)
+        db.session.commit()
+    except Exception as err:
+        db.session.rollback()
+        db.session.flush()
+        print('ERROR: {err}:'.format(err=err))
+        print('--------')
+        traceback.print_exc()
 
 
 def sync(max_records=None):

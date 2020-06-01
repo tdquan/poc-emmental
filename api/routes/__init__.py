@@ -4,5 +4,4 @@
 
 def import_routes():
     import routes.reviews
-
     import routes.health

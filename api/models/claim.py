@@ -9,4 +9,4 @@ class Claim(ApiHandler,
             Model,
             HasScienceFeedbackMixin):
 
-    text = *TBW*
+    text = Column(Text, nullable=False)
