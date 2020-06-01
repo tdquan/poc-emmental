@@ -16,10 +16,9 @@ class Content(ApiHandler,
               Model,
               HasScienceFeedbackMixin):
 
-    title   = Column(String, nullable=False)
+    title   = Column(String)
     url     = Column(String, nullable=False)
     type    = Enum(ContentType)
 
-    @property
     def __repr__(self):
         return '<Content: {id}>'.format(id=self.id)

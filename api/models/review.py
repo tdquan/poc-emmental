@@ -31,9 +31,9 @@ class Review(ApiHandler,
                                  foreign_keys=[contentId],
                                  backref='reviews')
 
-    comment       = Column(Text(), nullable=False)
+    comment       = Column(Text())
 
-    evaluation    = Column(Integer(), nullable=False)
+    evaluation    = Column(Integer())
 
     reviewerId    = Column(BigInteger(),
                            ForeignKey('user.id'),

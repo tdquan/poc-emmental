@@ -1,7 +1,8 @@
+import traceback
+
 from flask import current_app as app
 
-
-from models.user import User
+from repository.science_feedback import sync
 from repository.clean import clean
 from utils.db import db
 
@@ -10,13 +11,9 @@ from utils.db import db
 def sandbox():
     clean()
 
-    print('create one user...')
-    user = User(email='foo.bar@feedback.news', firstName='Foo', lastName='Bar')
-    db.session.add(user)
     try:
-      db.session.commit()
-      print('create one user...Done.')
-    except Exception as e:
-      print(e)
-      db.session.rollback()
-      db.session.flush()
+      sync()
+    except Exception as err:
+      print('ERROR: {err}:'.format(err=err))
+      print('--------')
+      traceback.print_exc()

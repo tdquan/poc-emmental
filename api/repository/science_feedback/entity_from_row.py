@@ -60,7 +60,6 @@ def editor_from_row(row):
         'scienceFeedbackId': row['airtableId']
     }
 
-
     user = User.create_or_modify(user_dict, search_by=['scienceFeedbackId'])
 
     return user
