@@ -1,30 +1,31 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { requestData } from 'redux-thunk-data'
+import React, { useEffect, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { requestData } from "redux-thunk-data";
 
-import Header from 'components/layout/Header'
-import Main from 'components/layout/Main'
+import Header from "components/layout/Header";
+import Main from "components/layout/Main";
 
-import ReviewItem from './ReviewItem'
+import ReviewItem from "./ReviewItem";
 
+// import { API_URL } from "utils/config";
 
-const KEYWORDS_CHAIN = 'coronavirus'
+import { loadReviews } from "actions/review";
 
+const KEYWORDS_CHAIN = "coronavirus";
 
 export default () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const reviews = useSelector(state => *TBW*)
-
+  const reviews = useSelector((state) => state.review.reviews);
 
   useEffect(() => {
-    const apiPath = `/reviews?keywords=${KEYWORDS_CHAIN}`
-    dispatch(requestData({ apiPath }))
-  }, [dispatch])
-
+    // const apiPath = `/reviews?keywords=${KEYWORDS_CHAIN}`;
+    // dispatch(requestData({ apiPath: apiPath, method: "GET" }));
+    dispatch(loadReviews());
+  }, [dispatch]);
 
   return (
-    <>
+    <Fragment>
       <Header />
       <Main className="landing">
         <div className="container">
@@ -32,10 +33,12 @@ export default () => {
             {`Reviews for "${KEYWORDS_CHAIN}": `}
           </section>
           <section className="results">
-            {(reviews || []).map(*TBW*)}
+            {(reviews || []).map((review, index) => (
+              <ReviewItem review={review} key={index} />
+            ))}
           </section>
         </div>
       </Main>
-    </>
-  )
-}
+    </Fragment>
+  );
+};

@@ -1,7 +1,10 @@
-import { combineReducers } from 'redux'
-import { createDataReducer } from 'redux-thunk-data'
+import { combineReducers } from "redux";
+// import { createDataReducer } from "redux-thunk-data";
 
+import errors from "./error";
+import review from "./review";
 
 export default combineReducers({
-  data: createDataReducer()
-})
+  review: review,
+  errors: errors,
+});

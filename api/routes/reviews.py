@@ -1,4 +1,5 @@
 from flask import current_app as app, jsonify, request
+from flask_cors import cross_origin
 from sqlalchemy_api_handler import ApiHandler
 
 from models.review import Review
@@ -7,13 +8,13 @@ from utils.rest import listify
 
 
 @app.route('/reviews', methods=['GET'])
+@cross_origin()
 def get_reviews():
     query = Review.query
 
     keywords_chain = request.args.get('keywords')
     if keywords_chain is not None:
         reviews_query_from_keywords_chain(query, keywords_chain)
-        print(query)
 
     return listify(Review,
                    includes=[

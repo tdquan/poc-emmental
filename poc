@@ -19,5 +19,5 @@ elif [[ "$CMD" == "restart" ]]; then
 elif [[ "$CMD" == "start" ]]; then
   docker-compose up
 elif [[ "$CMD" == "webapp" ]]; then
-  *TBW*
+  cd webapp && yarn start
 fi

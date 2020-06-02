@@ -1,10 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import Icon from 'components/layout/Icon'
-
+import Icon from "components/layout/Icon";
 
 export default () => (
   <div className="header">
-    <Icon name=*TBW* />
+    <Icon name="logo.svg" />
   </div>
-)
+);

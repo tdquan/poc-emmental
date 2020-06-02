@@ -3,6 +3,7 @@
 
 import os
 from flask_script import Manager
+from flask_cors import CORS
 
 from models import import_models
 from routes import import_routes
@@ -19,6 +20,8 @@ def setup(flask_app,
     flask_app.config['ENV'] = os.environ.get('FLASK_ENV') or 'development'
     flask_app.config['PORT'] = os.environ.get('PORT')
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = flask_app.config['ENV'] == 'production'
+
+    CORS(flask_app, resources={r'/*': {'origins': 'http://localhost:3000'}}, supports_credentials=True)
 
     db.init_app(flask_app)
 
