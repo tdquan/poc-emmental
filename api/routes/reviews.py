@@ -8,7 +8,7 @@ from utils.rest import listify
 
 
 @app.route('/reviews', methods=['GET'])
-@cross_origin()
+@cross_origin(supports_credentials=True)
 def get_reviews():
     query = Review.query
 
