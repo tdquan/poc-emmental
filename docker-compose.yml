@@ -1,0 +1,38 @@
+version: '3.2'
+
+services:
+  api:
+    build:
+      *TBW*
+    command: >
+      *TBW*
+    container_name: poc-api
+    depends_on:
+      *TBW*
+    env_file:
+      - ./.env
+    environment:
+      *TBW*
+    networks:
+      *TBW*
+    ports:
+      *TBW*
+    volumes:
+      - ./api:*TBW*
+
+  apidb:
+    command: *TBW*
+    container_name: poc-apidb
+    environment:
+      *TBW*
+    image: postgres:10.1
+    networks:
+      *TBW*
+    volumes:
+      - "./docker_data/apidb:*TBW*"
+
+networks:
+  *TBW*
+
+volumes:
+  docker_data:

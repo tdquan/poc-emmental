@@ -1,0 +1,16 @@
+.main {
+  padding-top: $header-height;
+  min-height: 100vh;
+  padding-bottom: 6.25rem;
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 64rem;
+
+    section {
+      margin-bottom: 2rem;
+    }
+  }
+}

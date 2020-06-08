@@ -1,0 +1,41 @@
+.verdict-item {
+  background: $white;
+  border: 1px solid $grey-light;
+  border-radius: 0.625rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  &.clickable {
+    // see https://tobiasahlin.com/blog/how-to-animate-box-shadow/
+    *TBW*
+
+    &::after {
+      *TBW*
+    }
+
+    &:hover {
+      *TBW*
+
+      &::after {
+        *TBW*
+      }
+    }
+  }
+
+  .editor {
+    *TBW*
+  }
+
+  .headline {
+    *TBW*
+  }
+
+  .claim {
+    *TBW*
+  }
+
+  .tags {
+    *TBW*
+  }
+
+}

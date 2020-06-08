@@ -1,0 +1,18 @@
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url("/static/assets/dropdown-disclosure-down.svg");
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
+  border: 1px solid $grey-light;
+  border-radius: 1rem;
+  color: $black;
+  font-size: 1rem;
+  font-family: Apercu;
+  font-weight: $font-weight-bold;
+  height: 2rem;
+  padding-left: 0.75rem;
+  text-align: center;
+  width: 15rem;
+}
