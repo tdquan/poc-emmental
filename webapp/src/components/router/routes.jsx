@@ -2,7 +2,6 @@ import Landing from 'components/pages/Landing'
 import Verdict from 'components/pages/Verdict'
 import Verdicts from 'components/pages/Verdicts'
 
-
 export default [
   {
     component: Landing,
@@ -17,9 +16,9 @@ export default [
     title: *TBW*,
   },
   {
-    component: *TBWù,
+    component: *TBW*,
     exact: true,
     path: *TBW*,
     title: *TBW*,
   }
-]
+];

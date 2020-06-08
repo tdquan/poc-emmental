@@ -8,9 +8,9 @@ from utils.db import Model
 class User(ApiHandler,
            Model,
            HasScienceFeedbackMixin):
+  ''' store user-related details '''
+  __tablename__ = 'user'
 
-    email = *TBW*
-
-    firstName = *TBW*
-
-    lastName = *TB
+  email       = Column(String, nullable=False, unique=True)
+  firstName   = Column(String, nullable=False)
+  lastName    = Column(String, nullable=False)

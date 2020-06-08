@@ -2,7 +2,19 @@
   font-family: "Apercu";
   font-style: italic;
   font-weight: 400;
-  src: url("../fonts/apercu_regular_italic.otf") format('truetype');
+  src: url("../fonts/apercu_regular_italic.otf") format("truetype");
 }
 
-*TBW*
+@font-face {
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/apercu_regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Apercu";
+  font-style: bold;
+  font-weight: 700;
+  src: url("../fonts/apercu_bold.otf") format("truetype");
+}

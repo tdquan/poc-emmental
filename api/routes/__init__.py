@@ -5,5 +5,5 @@
 def import_routes():
     import routes.tags
     import routes.verdicts
-
+    import routes.reviews
     import routes.health
