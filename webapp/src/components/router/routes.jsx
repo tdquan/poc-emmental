@@ -1,24 +1,24 @@
-import Landing from 'components/pages/Landing'
-import Verdict from 'components/pages/Verdict'
-import Verdicts from 'components/pages/Verdicts'
+import Landing from "components/pages/Landing";
+import Verdict from "components/pages/Verdict";
+import Verdicts from "components/pages/Verdicts";
 
 export default [
   {
     component: Landing,
     exact: true,
-    path: '/',
-    title: 'Landing',
+    path: "/",
+    title: "Landing",
   },
   {
-    component: *TBW*,
+    component: Verdict,
     exact: true,
-    path: '/verdicts/:verdictId([A-Za-z0-9]{2,})',
-    title: *TBW*,
+    path: "/verdicts/:verdictId([A-Za-z0-9]{2,})",
+    title: "Verdict",
   },
   {
-    component: *TBW*,
+    component: Verdicts,
     exact: true,
-    path: *TBW*,
-    title: *TBW*,
-  }
+    path: "/verdicts",
+    title: "Verdicts",
+  },
 ];

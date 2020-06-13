@@ -8,6 +8,8 @@ from sqlalchemy_api_handler import ApiHandler
 from models.mixins.has_science_feedback_mixin import HasScienceFeedbackMixin
 from utils.db import Model
 
+__model__ = 'Medium'
+
 
 class Medium(ApiHandler,
              Model,
@@ -15,8 +17,8 @@ class Medium(ApiHandler,
 
     name = Column(String(256), nullable=False)
 
-    organizationId = *TBW*
+    organizationId = Column(BigInteger(), ForeignKey('organization.id'), index=True)
 
-    organization = *TBW*
+    organization = relationship('Organization', foreign_keys=[organizationId], backref='media')
 
     url = Column(String(300))

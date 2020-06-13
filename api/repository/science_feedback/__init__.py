@@ -54,7 +54,7 @@ def sync_for(name, max_records=None):
     except Exception as err:
         db.session.rollback()
         db.session.flush()
-        print('ERROR: {err}:'.format(err=err))
+        logger.error('{err}:'.format(err=err))
         print('--------')
         traceback.print_exc()
 

@@ -4,8 +4,7 @@
 import os
 from flask_cors import CORS
 from flask_script import Manager
-from sqlalchemy_api_handler import ApiHandler
-from flask_cors import CORS
+from sqlalchemy_api_handler import ApiHandler, logger
 
 from models import import_models
 from routes import import_routes
@@ -30,9 +29,9 @@ def setup(flask_app,
     @flask_app.teardown_request
     def remove_db_session(exc):
         try:
-            *TBW*
+            logger.info(exc)
         except AttributeError:
-            pass
+            logger.error('AttributeError at {file}'.format(file=__name__))
 
     if with_cors:
         CORS(flask_app, resources={r'/*': {'origins': 'http://localhost:3000'}}, supports_credentials=True)

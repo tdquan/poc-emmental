@@ -1,17 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import AppearanceItem from './AppearanceItem'
-
+import AppearanceItem from "./AppearanceItem";
 
 export default ({ appearances }) => {
-
   if (!appearances.length) {
-    return *TBW*
+    return null;
   }
 
-  return (
-    <div className="appearances">
-      *TBW*
-    </div>
-  )
-}
+  return <div className="appearances">*TBW*</div>;
+};

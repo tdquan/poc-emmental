@@ -1,6 +1,5 @@
-@import 'KeywordsBar.scss';
-@import 'TagsSelect.scss';
-
+@import "KeywordsBar.scss";
+@import "TagsSelect.scss";
 
 .controls {
   align-items: center;
@@ -30,8 +29,8 @@
   }
 
   button {
-    @extend .button;
-    @extend .button.is-primary;
+    // @extend .button;
+    // @extend .button.is-primary;
   }
 
   .text-field {

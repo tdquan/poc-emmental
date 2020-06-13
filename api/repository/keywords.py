@@ -8,6 +8,7 @@ from models.medium import Medium
 from models.organization import Organization
 from models.review import Review
 from models.user import User
+from models.verdict import Verdict
 
 
 def create_tsvector(*targets):
@@ -18,13 +19,30 @@ def create_tsvector(*targets):
 
 
 def import_keywords():
-    Medium.__ts_vector__ = *TBW*
+    Medium.__ts_vector__ = create_tsvector(
+        cast(coalesce(Medium.name, ''), TEXT),
+        cast(coalesce(Medium.url, ''), TEXT),
+    )
 
-    Medium.__table_args__ = *TBW*
+    Medium.__table_args__ = (
+        Index(
+            'idx_medium_fts',
+            Medium.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
-    Organization.__ts_vector__ = *TBW*
+    Organization.__ts_vector__ = create_tsvector(
+        cast(coalesce(Organization.name, ''), TEXT),
+    )
 
-    Organization.__table_args__ = *TBW*
+    Organization.__table_args__ = (
+        Index(
+            'idx_organization_fts',
+            Organization.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
     Claim.__ts_vector__ = create_tsvector(
         cast(coalesce(Claim.text, ''), TEXT),
@@ -71,7 +89,19 @@ def import_keywords():
     User.__table_args__ = (
         Index(
             'idx_user_fts',
-            Claim.__ts_vector__,
+            User.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
+
+    Verdict.__ts_vector__ = create_tsvector(
+        cast(coalesce(Verdict.title, ''), TEXT),
+    )
+
+    Verdict.__table_args__ = (
+        Index(
+            'idx_verdict_fts',
+            Verdict.__ts_vector__,
             postgresql_using='gin'
         ),
     )

@@ -12,7 +12,7 @@ const _ = ({ children }) => (
       <meta name="theme-color" content="#ffffff" />
       <meta
         httpEquiv="Content-Security-Policy"
-        content="default-src *; style-src 'self' 'unsafe-inline';"
+        content="default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
       />
       <title>Poc Webapp</title>
     </Helmet>

@@ -4,14 +4,16 @@ from sqlalchemy_api_handler import ApiHandler
 
 from utils.db import Model
 
+__model__ = 'VerdictReviewer'
+
 
 class VerdictReviewer(ApiHandler,
                       Model):
 
-    verdictId = *TBW*
+    verdictId = Column(BigInteger(), ForeignKey('verdict.id'), primary_key=True)
 
-    verdict = *TBW*
+    verdict = relationship('Verdict', foreign_keys=[verdictId], backref='verdictReviewers')
 
-    reviewerId = *TBW*
+    reviewerId = Column(BigInteger(), ForeignKey('user.id'), index=True)
 
-    reviewer = *TBW*
+    reviewer = relationship('User', foreign_keys=[reviewerId], backref='verdictReviewers')

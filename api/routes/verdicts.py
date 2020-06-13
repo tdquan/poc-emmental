@@ -2,8 +2,9 @@ from flask import current_app as app, jsonify, request
 from sqlalchemy_api_handler import ApiHandler
 
 from models.verdict import Verdict
-from repository.reviews import keep_verdicts_with_keywords_chain, \
-                               keep_verdicts_with_tag
+from repository.verdicts import keep_verdicts_with_keywords_chain, \
+                                keep_verdicts_with_tag, \
+                                load_or_404
 from utils.rest import listify
 
 
@@ -53,20 +54,20 @@ INCLUDES = [
 @app.route('/verdicts/<verdict_id>', methods=['GET'])
 def get_verdict(verdict_id):
     verdict = load_or_404(Verdict, verdict_id)
-    return jsonify(*TBW*)
-    
+    return jsonify(verdict)
+
 
 @app.route('/verdicts', methods=['GET'])
-def get_reviews():
+def get_verdicts():
     query = Verdict.query
 
     keywords_chain = request.args.get('keywords')
     if keywords_chain is not None:
-        query = *TBW*
+        query = keep_verdicts_with_keywords_chain(query, keywords_chain)
 
     tag = request.args.get('tag')
     if tag:
-        query = *TBW*
+        query = keep_verdicts_with_tag(query, tag)
 
     return listify(Verdict,
                    includes=INCLUDES,

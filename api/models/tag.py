@@ -3,12 +3,14 @@ from sqlalchemy_api_handler import ApiHandler
 
 from utils.db import Model
 
+__model__ = 'Tag'
+
 
 class Tag(ApiHandler,
           Model):
 
     evaluationValue = Column(Integer())
 
-    info = *TBW*
+    info = Column(Text())
 
-    label = *TBW*
+    label = Column(String(256), nullable=False)

@@ -9,26 +9,36 @@ from sqlalchemy_api_handler import ApiHandler
 from models.mixins.has_science_feedback_mixin import HasScienceFeedbackMixin
 from utils.db import Model
 
+__model__ = 'Verdict'
+
 
 class Verdict(ApiHandler,
               Model,
               HasScienceFeedbackMixin):
 
-    claimId = *TBW*
+    claimId = Column(BigInteger(),
+                     ForeignKey('claim.id'),
+                     nullable=False,
+                     index=True)
 
-    claim = *TBW*
+    claim = relationship('Claim',
+                         foreign_keys=[claimId],
+                         backref='verdicts')
 
-    contentId = *TBW*
+    contentId = Column(BigInteger(),
+                       ForeignKey('content.id'),
+                       index=True)
 
-    content = *TBW*
+    content = relationship('Content',
+                           foreign_keys=[contentId],
+                           backref='verdicts')
 
     editorId = Column(BigInteger(),
                       ForeignKey('user.id'),
-                      nullable=False,
                       index=True)
 
     editor = relationship('User',
                           foreign_keys=[editorId],
                           backref='verdicts')
 
-    title = *TBW*
+    title = Column(String(), nullable=False)

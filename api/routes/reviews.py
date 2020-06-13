@@ -14,7 +14,7 @@ def get_reviews():
 
     keywords_chain = request.args.get('keywords')
     if keywords_chain is not None:
-        reviews_query_from_keywords_chain(query, keywords_chain)
+        query = reviews_query_from_keywords_chain(query, keywords_chain)
 
     return listify(Review,
                    includes=[

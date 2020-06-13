@@ -1,56 +1,44 @@
-import PropTypes from 'prop-types'
-import React, { useCallback, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { requestData } from 'redux-thunk-data'
+import PropTypes from "prop-types";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { requestData } from "redux-thunk-data";
 
+const _ = ({ onChange, selectedTag }) => {
+  const dispatch = useDispatch();
 
-const _ = ({
-  onChange,
-  selectedTag
-}) => {
-  const dispatch = useDispatch()
+  const tags = useSelector((state) => state.data.tags);
 
-
-  const tags = useSelector(state => state.data.tags)
-
-
-  const handleOnChange = useCallback(event =>
-    onChange(*TBW*, *TBW*), [onChange])
-
+  const handleOnChange = useCallback((event) => onChange("tag", event), [
+    onChange,
+  ]);
 
   useEffect(() => {
-    dispatch(requestData({apiPath: '/tags'}))
-  }, [dispatch])
+    dispatch(requestData({ apiPath: "/tags" }));
+  }, [dispatch]);
 
-  if (!tags) return null
+  if (!tags) return null;
 
   return (
     <select
       className="tags-select"
       onChange={handleOnChange}
-      value={selectedTag || ''}
+      value={selectedTag || ""}
     >
-      <option
-        key={''}
-        value={''}
-      >
+      <option key={""} value={""}>
         All Tags
       </option>
       {tags.map(({ label }) => (
-        <option
-          key={label}
-          value={label}
-        >
+        <option key={label} value={label}>
           {label}
         </option>
       ))}
     </select>
-  )
-}
+  );
+};
 
 _.propTypes = {
   onChange: PropTypes.func.isRequired,
-  selectedTag: PropTypes.string
-}
+  selectedTag: PropTypes.string,
+};
 
-export default _
+export default _;

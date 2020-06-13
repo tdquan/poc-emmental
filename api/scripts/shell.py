@@ -1,16 +1,14 @@
-from flask import Flask, current_app as app
+from flask import current_app as app
+from sqlalchemy_api_handler import logger
 
-from utils.setup import setup
 from utils.db import db
 import models
 
 
-FLASK_APP = Flask(__name__)
-
-
-@FLASK_APP.shell_context_processor
+@app.manager.shell
 def make_shell_context():
-  return({app: app, db: db, models: models})
-
-
-setup(FLASK_APP)
+    mods = {}
+    for model in models.__all__:
+        mods[model.__name__] = model
+    logger.info('Starting shell...')
+    return ({'app': app, 'db': db, **mods})
