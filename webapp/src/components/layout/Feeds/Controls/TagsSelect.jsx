@@ -8,9 +8,10 @@ const _ = ({ onChange, selectedTag }) => {
 
   const tags = useSelector((state) => state.data.tags);
 
-  const handleOnChange = useCallback((event) => onChange("tag", event), [
-    onChange,
-  ]);
+  const handleOnChange = useCallback(
+    (event) => onChange("tag", event.target.value),
+    [onChange]
+  );
 
   useEffect(() => {
     dispatch(requestData({ apiPath: "/tags" }));

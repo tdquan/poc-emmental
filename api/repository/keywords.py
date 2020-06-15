@@ -9,6 +9,7 @@ from models.organization import Organization
 from models.review import Review
 from models.user import User
 from models.verdict import Verdict
+from models.tag import Tag
 
 
 def create_tsvector(*targets):
@@ -102,6 +103,18 @@ def import_keywords():
         Index(
             'idx_verdict_fts',
             Verdict.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
+
+    Tag.__ts_vector__ = create_tsvector(
+        cast(coalesce(Tag.label, ''), TEXT),
+    )
+
+    Tag.__table_args__ = (
+        Index(
+            'idx_tag_fts',
+            Tag.__ts_vector__,
             postgresql_using='gin'
         ),
     )

@@ -10,7 +10,7 @@ __model__ = 'AuthorContent'
 class AuthorContent(ApiHandler,
                     Model):
 
-    authorId = Column(BigInteger(),
+    authorId = Column(BigInteger,
                       ForeignKey('user.id'),
                       primary_key=True)
 
@@ -18,6 +18,6 @@ class AuthorContent(ApiHandler,
                           backref=backref('authorContents'),
                           foreign_keys=[authorId])
 
-    contentId = Column(BigInteger(), ForeignKey('content.id'), index=True)
+    contentId = Column(BigInteger, ForeignKey('content.id'), index=True)
 
     content = relationship('Content', foreign_keys=[contentId], backref='authorContents')

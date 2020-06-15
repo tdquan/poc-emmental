@@ -53,14 +53,7 @@ def sync_for(name, max_records=None):
         db.session.commit()
     except Exception as err:
         db.session.rollback()
-        db.session.flush()
+        db.session.remove()
         logger.error('{err}:'.format(err=err))
         print('--------')
         traceback.print_exc()
-
-
-# def sync(max_records=None):
-#     logger.info('import science feedback data...')
-#     for name in NAME_TO_AIRTABLE.keys():
-#         sync_for(name, max_records=max_records)
-#     logger.info('import science feedback data...Done.')

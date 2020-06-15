@@ -6,6 +6,7 @@ from models.claim import Claim
 from models.content import Content
 from models.medium import Medium
 from models.organization import Organization
+from models.verdict_tag import VerdictTag
 from models.tag import Tag
 
 
@@ -21,6 +22,18 @@ def verdict_ts_filter(ts_query):
     )
 
 
+def tag_ts_filter(ts_query):
+    return and_(
+        *[
+            model.__ts_vector__.match(
+                ts_query,
+                postgresql_regconfig='english'
+            )
+            for model in [Tag]
+        ]
+    )
+
+
 def keep_verdicts_with_keywords_chain(query, keywords_chain):
     # Optionable TBW : make the search also able to find keywords
     # in joined claim, content, media and organization columns
@@ -28,6 +41,8 @@ def keep_verdicts_with_keywords_chain(query, keywords_chain):
                  .outerjoin(Content) \
                  .outerjoin(Medium) \
                  .outerjoin(Organization) \
+                 .join(VerdictTag) \
+                 .join(Tag) \
                  .join(User)
 
     ts_queries = ['{}:*'.format(keyword) for keyword in keywords_chain.split(' ')]
@@ -36,13 +51,7 @@ def keep_verdicts_with_keywords_chain(query, keywords_chain):
     return query
 
 
-def keep_verdicts_with_tag(query, tag):
-    query = query.join(Tag)
-    print('tag is {tag}'.format(tag=tag))
-
-
-def load_or_404(model, modelId):
-    item = model.query.filter_by(id=modelId).first()
-    if item is None:
-        return {'error': 'not found', 'code': 404}
-    return item
+def keep_verdicts_with_tag(query, tags):
+    ts_queries = ['{}:*'.format(tag) for tag in tags.split(' ')]
+    ts_filters = [tag_ts_filter(ts_query) for ts_query in ts_queries]
+    return query.filter(and_(*ts_filters))

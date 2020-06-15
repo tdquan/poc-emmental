@@ -29,8 +29,8 @@ export default () => {
       <Header />
       <Main className="verdict">
         <div className="container">
-          {/*{*TBW*}*/}
           <VerdictItem className="" verdict={verdict} />
+          <Appearances appearances={quotedFromAppearances} />
         </div>
       </Main>
     </>

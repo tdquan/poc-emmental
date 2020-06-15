@@ -1,10 +1,10 @@
 from flask import current_app as app, jsonify, request
-from sqlalchemy_api_handler import ApiHandler
+from flask_cors import cross_origin
+from sqlalchemy_api_handler import load_or_404, as_dict
 
 from models.verdict import Verdict
 from repository.verdicts import keep_verdicts_with_keywords_chain, \
-                                keep_verdicts_with_tag, \
-                                load_or_404
+                                keep_verdicts_with_tag
 from utils.rest import listify
 
 
@@ -52,12 +52,14 @@ INCLUDES = [
 
 
 @app.route('/verdicts/<verdict_id>', methods=['GET'])
+@cross_origin(supports_credentials=True)
 def get_verdict(verdict_id):
     verdict = load_or_404(Verdict, verdict_id)
-    return jsonify(verdict)
+    return jsonify(as_dict(verdict, includes=INCLUDES))
 
 
 @app.route('/verdicts', methods=['GET'])
+@cross_origin(supports_credentials=True)
 def get_verdicts():
     query = Verdict.query
 

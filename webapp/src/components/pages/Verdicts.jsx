@@ -27,7 +27,7 @@ export default () => {
       <Header />
       <Main className="verdicts">
         <div className="container">
-          <section className="title">*TBW*</section>
+          <section className="title">Verdicts found</section>
           <section className="results">
             <Feeds config={config} key={search} renderItem={renderItem} />
           </section>

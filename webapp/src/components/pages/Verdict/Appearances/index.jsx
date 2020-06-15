@@ -7,5 +7,11 @@ export default ({ appearances }) => {
     return null;
   }
 
-  return <div className="appearances">*TBW*</div>;
+  return (
+    <div className="appearances">
+      {appearances.map((appearance) => (
+        <AppearanceItem appearance={appearance} key={appearance.id} />
+      ))}
+    </div>
+  );
 };

@@ -1,8 +1,7 @@
-from sqlalchemy import BigInteger, \
-                       Column, \
-                       Enum, \
+from sqlalchemy import Column, \
                        ForeignKey, \
-                       String
+                       String, \
+                       BigInteger
 from sqlalchemy.orm import relationship
 from sqlalchemy_api_handler import ApiHandler
 
@@ -16,7 +15,7 @@ class Verdict(ApiHandler,
               Model,
               HasScienceFeedbackMixin):
 
-    claimId = Column(BigInteger(),
+    claimId = Column(BigInteger,
                      ForeignKey('claim.id'),
                      nullable=False,
                      index=True)
@@ -25,7 +24,7 @@ class Verdict(ApiHandler,
                          foreign_keys=[claimId],
                          backref='verdicts')
 
-    contentId = Column(BigInteger(),
+    contentId = Column(BigInteger,
                        ForeignKey('content.id'),
                        index=True)
 
@@ -33,7 +32,7 @@ class Verdict(ApiHandler,
                            foreign_keys=[contentId],
                            backref='verdicts')
 
-    editorId = Column(BigInteger(),
+    editorId = Column(BigInteger,
                       ForeignKey('user.id'),
                       index=True)
 

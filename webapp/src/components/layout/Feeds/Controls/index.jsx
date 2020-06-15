@@ -32,7 +32,7 @@ export default ({ config }) => {
       dispatch(
         deleteData(null, { tags: [getItemsActivityTagFromConfig(config)] })
       );
-      setTimeout(() => history.push("/")); // *TBW*
+      setTimeout(() => history.push(url.search));
     },
     [config, dispatch, history, search, url]
   );

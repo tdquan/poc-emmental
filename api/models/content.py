@@ -1,5 +1,5 @@
 import enum
-from sqlalchemy import Column, Enum, String, BigInteger, ForeignKey
+from sqlalchemy import Column, Enum, String, ForeignKey, BigInteger
 from sqlalchemy.orm import relationship
 from sqlalchemy_api_handler import ApiHandler
 

@@ -29,9 +29,9 @@ def setup(flask_app,
     @flask_app.teardown_request
     def remove_db_session(exc):
         try:
-            logger.info(exc)
+            db.session.remove()
         except AttributeError:
-            logger.error('AttributeError at {file}'.format(file=__name__))
+            logger.error('AttributeError: {exc} at {file}'.format(exc=exc, file=__name__))
 
     if with_cors:
         CORS(flask_app, resources={r'/*': {'origins': 'http://localhost:3000'}}, supports_credentials=True)

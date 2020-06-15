@@ -19,7 +19,24 @@ const _ = ({ className, verdict }) => {
       className={classnames("verdict-item", className)}
       onClick={handleClick}
     >
-      *TBW*
+      <div className="text-muted">
+        editor: {`${editor.firstName} ${editor.lastName}`}
+      </div>
+      <br />
+      <h4>{headline}</h4>
+      <br />
+      <p>
+        <span>Original claim:</span>
+        <i>"{claim.text}"</i>
+      </p>
+      <br />
+      <div className="tags">
+        {verdictTags.map((tag) => (
+          <span className="tag text-center" key={tag.id}>
+            {tag.tag.label}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

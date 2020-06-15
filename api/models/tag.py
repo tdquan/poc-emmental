@@ -11,6 +11,6 @@ class Tag(ApiHandler,
 
     evaluationValue = Column(Integer())
 
-    info = Column(Text())
+    info            = Column(Text())
 
-    label = Column(String(256), nullable=False)
+    label           = Column(String(256), nullable=False)

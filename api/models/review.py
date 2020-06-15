@@ -17,7 +17,7 @@ class Review(ApiHandler,
              Model,
              HasScienceFeedbackMixin):
 
-    claimId       = Column(BigInteger(),
+    claimId       = Column(BigInteger,
                            ForeignKey('claim.id'),
                            index=True)
 
@@ -25,7 +25,7 @@ class Review(ApiHandler,
                                  foreign_keys=[claimId],
                                  backref='reviews')
 
-    contentId     = Column(BigInteger(),
+    contentId     = Column(BigInteger,
                            ForeignKey('content.id'),
                            index=True)
 
@@ -37,7 +37,7 @@ class Review(ApiHandler,
 
     evaluation    = Column(Integer())
 
-    reviewerId    = Column(BigInteger(),
+    reviewerId    = Column(BigInteger,
                            ForeignKey('user.id'),
                            index=True)
 

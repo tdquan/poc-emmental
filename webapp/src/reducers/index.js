@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import { createDataReducer } from "redux-thunk-data";
+import { createDataReducer, createRequestsReducer } from "redux-thunk-data";
 
 export default combineReducers({
   data: createDataReducer(),
+  requests: createRequestsReducer(),
 });
