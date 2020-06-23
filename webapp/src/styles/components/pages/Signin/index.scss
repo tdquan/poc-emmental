@@ -1,0 +1,43 @@
+@import "Form/index.scss";
+
+
+.signin {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+  margin: auto;
+  position: relative;
+
+  form {
+    width: 355px;
+  }
+
+  section {
+    margin-bottom: 200px
+  }
+
+  .errors {
+    color: $primary;
+    font-size: 0.9rem;
+    font-weight: 500;
+    // height: 2rem;
+    line-height: 2em;
+    list-style-type: none;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .field {
+    margin-bottom: 0;
+    label {
+      display: block;
+    }
+  }
+
+
+}

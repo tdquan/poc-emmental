@@ -1,0 +1,40 @@
+@import 'KeywordsBar.scss';
+@import 'TagsSelect.scss';
+
+
+.controls {
+  align-items: center;
+  border-bottom: 1px solid $grey-light;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+
+  .right {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    select {
+      display: flex;
+      height: 2rem;
+      border-color: $grey-light;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 1.25rem;
+      margin-right: 0.25rem;
+      padding-left: 1rem;
+      padding-right: 0.375rem;
+      width: 7rem;
+    }
+  }
+
+  button {
+    @extend .button;
+    @extend .button.is-primary;
+  }
+
+  .text-field {
+    margin-bottom: 0;
+  }
+}

@@ -1,15 +1,14 @@
 from flask import current_app as app
 
-
-from models.user import User
 from repository.clean import clean
-from utils.db import db
+from repository.science_feedback import sync as sync_science_feedback
+from repository.tags import sync as sync_tags
+from repository.users import create_poctest_user
 
 
 @app.manager.command
 def sandbox():
     clean()
-
-    print('create one user...')
-    *TBW*
-    print('create one user...Done.')
+    sync_tags()
+    sync_science_feedback()
+    create_poctest_user()

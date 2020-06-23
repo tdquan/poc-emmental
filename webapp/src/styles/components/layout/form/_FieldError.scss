@@ -1,0 +1,30 @@
+.field-error {
+  color: $red;
+  display: block;
+  font-weight: 0.5rem;
+
+  &.field-error-message + .field-error-message {
+    color: $red;
+    padding-left: 0.75rem;
+  }
+
+  .icon-and-messages {
+    display: flex;
+    text-align: left;
+
+    .icon {
+      flex: 0;
+      margin-right: 0.25rem;
+    }
+
+    .messages {
+      flex: 1;
+      font-weight: $font-weight-semibold;
+
+      .message {
+        display: block;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+}

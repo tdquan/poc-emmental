@@ -7,6 +7,7 @@ FLASK_APP = Flask(__name__)
 
 
 setup(FLASK_APP,
+      with_cors=True,
       with_models_creation=True,
       with_routes=True)
 

@@ -1,0 +1,54 @@
+{
+  "homepage": "/",
+  "license": "MPL-2.0",
+  "name": "poc",
+  "engines": {
+    "node": ">=12.13.0 <12.13.1"
+  },
+  "dependencies": {
+    "classnames": "2.2.5",
+    "final-form": "^4.9.1",
+    "prop-types": "^15.7.2",
+    "re-reselect": "^2.1.0",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-final-form": "^6.3.3",
+    "react-helmet": "^5.2.1",
+    "react-infinite-scroller": "1.2.4",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-react-modals": "1.3.0",
+    "redux-thunk": "^2.3.0",
+    "redux-thunk-data": "1.10.10",
+    "reselect": "^4.0.0",
+    "with-react-redux-login": "1.14.4"
+  },
+  "devDependencies": {
+    "eslint-plugin-jest": "^23.0.5",
+    "husky": "^3.0.9",
+    "node-sass": "^4.9.4",
+    "prettier-eslint-cli": "^5.0.0",
+    "prettier-stylelint": "^0.4.2",
+    "react-scripts": "3.1.2",
+    "stylelint": "^11.1.1",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.12.0"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "start": "react-scripts start"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

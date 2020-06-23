@@ -1,0 +1,14 @@
+.signout {
+  @extend .button;
+  @extend .is-undressed;
+
+  color: $black;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 250ms ease-out;
+
+  &:hover,
+  &:focus {
+    transform: translateX(0.375rem);
+  }
+}
