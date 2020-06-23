@@ -1,3 +1,5 @@
+from sqlalchemy_api_handler import logger
+
 from models.user import User
 
 
@@ -14,6 +16,6 @@ def check_health():
             'working': True
         })
     except Exception as e:
-        pass
+        logger.error(e)
 
     return health

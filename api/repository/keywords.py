@@ -8,6 +8,7 @@ from models.medium import Medium
 from models.organization import Organization
 from models.review import Review
 from models.user import User
+from models.verdict import Verdict
 
 
 def create_tsvector(*targets):
@@ -18,25 +19,55 @@ def create_tsvector(*targets):
 
 
 def import_keywords():
-    Claim.__ts_vector__ = *TBW*
+    Medium.__ts_vector__ = create_tsvector(
+        cast(coalesce(Medium.name, ''), TEXT),
+        cast(coalesce(Medium.url, ''), TEXT),
+    )
 
-    Claim.__table_args__ = *TBW*
+    Medium.__table_args__ = (
+        Index(
+            'idx_medium_fts',
+            Medium.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
+    Organization.__ts_vector__ = create_tsvector(
+        cast(coalesce(Organization.name, ''), TEXT),
+    )
 
-    Content.__ts_vector__ = *TBW*
+    Organization.__table_args__ = (
+        Index(
+            'idx_organization_fts',
+            Organization.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
-    Content.__table_args__ = *TBW*
+    Claim.__ts_vector__ = create_tsvector(
+        cast(coalesce(Claim.text, ''), TEXT),
+    )
 
+    Claim.__table_args__ = (
+        Index(
+            'idx_claim_fts',
+            Claim.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
-    Medium.__ts_vector__ = *TBW*
+    Content.__ts_vector__ = create_tsvector(
+        cast(coalesce(Content.title, ''), TEXT),
+        cast(coalesce(Content.url, ''), TEXT),
+    )
 
-    Medium.__table_args__ = *TBW*
-
-
-    Organization.__ts_vector__ = *TBW*
-
-    Organization.__table_args__ = *TBW*
-
+    Content.__table_args__ = (
+        Index(
+            'idx_content_fts',
+            Content.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
     Review.__ts_vector__ = create_tsvector(
         cast(coalesce(Review.comment, ''), TEXT),
@@ -49,7 +80,28 @@ def import_keywords():
         ),
     )
 
+    User.__ts_vector__ = create_tsvector(
+        cast(coalesce(User.email, ''), TEXT),
+        cast(coalesce(User.firstName, ''), TEXT),
+        cast(coalesce(User.lastName, ''), TEXT),
+    )
 
-    User.__ts_vector__ = *TBW*
+    User.__table_args__ = (
+        Index(
+            'idx_user_fts',
+            User.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )
 
-    User.__table_args__ = *TBW*
+    Verdict.__ts_vector__ = create_tsvector(
+        cast(coalesce(Verdict.title, ''), TEXT),
+    )
+
+    Verdict.__table_args__ = (
+        Index(
+            'idx_verdict_fts',
+            Verdict.__ts_vector__,
+            postgresql_using='gin'
+        ),
+    )

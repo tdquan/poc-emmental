@@ -5,20 +5,19 @@ from sqlalchemy_api_handler import ApiHandler
 from models.mixins.has_science_feedback_mixin import HasScienceFeedbackMixin
 from utils.db import Model
 
+__model__ = 'User'
+
 
 class User(ApiHandler,
            Model,
            HasScienceFeedbackMixin):
+    ''' store user-related details '''
 
-    clearTextPassword = None
-
-    email = *TBW*
-
-    firstName = *TBW*
-
-    lastName = *TBW*
-
-    password = Column(LargeBinary(60), nullable=False)
+    clearTextPassword   = None
+    email               = Column(String, nullable=False, unique=True)
+    firstName           = Column(String, nullable=False)
+    lastName            = Column(String, nullable=False)
+    password            = Column(LargeBinary(60), nullable=False)
 
     def check_password(self, passwordToCheck):
         return *TBW*

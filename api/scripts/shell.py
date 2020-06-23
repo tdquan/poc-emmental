@@ -1,8 +1,14 @@
-from flask import Flask
+from flask import current_app as app
+from sqlalchemy_api_handler import logger
 
-from utils.setup import setup
+from utils.db import db
+import models
 
 
-FLASK_APP = Flask(__name__)
-
-setup(FLASK_APP)
+@app.manager.shell
+def make_shell_context():
+    mods = {}
+    for model in models.__all__:
+        mods[model.__name__] = model
+    logger.info('Starting shell...')
+    return ({'app': app, 'db': db, **mods})

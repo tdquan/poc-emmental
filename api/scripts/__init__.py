@@ -4,3 +4,4 @@
 def install_scripts():
     import scripts.clean
     import scripts.sandbox
+    import scripts.shell

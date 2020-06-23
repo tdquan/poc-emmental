@@ -4,6 +4,8 @@ from sqlalchemy_api_handler import ApiHandler
 
 from utils.db import Model
 
+__model__ = 'AuthorContent'
+
 
 class AuthorContent(ApiHandler,
                     Model):
@@ -16,6 +18,6 @@ class AuthorContent(ApiHandler,
                           backref=backref('authorContents'),
                           foreign_keys=[authorId])
 
-    contentId = *TBW*
+    contentId = Column(BigInteger(), ForeignKey('content.id'), index=True)
 
-    content = *TBW*
+    content = relationship('Content', foreign_keys=[contentId], backref='authorContents')

@@ -6,7 +6,7 @@
 import os
 from flask_cors import CORS
 from flask_script import Manager
-from sqlalchemy_api_handler import ApiHandler
+from sqlalchemy_api_handler import ApiHandler, logger
 
 from models import import_models
 from routes import import_routes
@@ -22,7 +22,9 @@ def setup(flask_app,
           with_routes=False):
 
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('POSTGRES_URL')
-    *TBW*
+    flask_app.config['ENV'] = os.environ.get('FLASK_ENV') or 'development'
+    flask_app.config['PORT'] = os.environ.get('PORT')
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = flask_app.config['ENV'] == 'production'
 
     db.init_app(flask_app)
     ApiHandler.set_db(db)
@@ -32,14 +34,15 @@ def setup(flask_app,
     @flask_app.teardown_request
     def remove_db_session(exc):
         try:
-            *TBW*
+            logger.info(exc)
         except AttributeError:
-            pass
+            logger.error('AttributeError at {file}'.format(file=__name__))
 
     if with_cors:
-        *TBW*
+        CORS(flask_app, resources={r'/*': {'origins': 'http://localhost:3000'}}, supports_credentials=True)
 
-    *TBW*
+    flask_app.app_context().push()
+
     import_models(with_creation=with_models_creation)
 
     if with_routes:

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": *TBW*
+    "baseUrl": "./src"
   },
-  "include": *TBW*
+  "include": ["src/**/*"]
 }

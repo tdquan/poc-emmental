@@ -4,14 +4,16 @@ from sqlalchemy_api_handler import ApiHandler
 
 from utils.db import Model
 
+__model__ = 'VerdictTag'
+
 
 class VerdictTag(ApiHandler,
                  Model):
 
-    verdictId = *TBW*
+    verdictId = Column(BigInteger(), ForeignKey('verdict.id'), primary_key=True)
 
-    verdict = *TBW*
+    verdict = relationship('Verdict', foreign_keys=[verdictId], backref='verdictTags')
 
-    tagId = *TBW*
+    tagId = Column(BigInteger(), ForeignKey('tag.id'), nullable=False, index=True)
 
-    tag = *TBW*
+    tag = relationship('Tag', foreign_keys=[tagId], backref='verdictTags')

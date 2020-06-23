@@ -3,21 +3,21 @@
 CMD="$1"
 
 if [[ "$CMD" == "build" ]]; then
-  *TBW*
+  docker-compose build
 elif [[ "$CMD" == "clean" || "$CMD" == "sandbox" ]]; then
-  docker exec -it poc-api bash -c "cd /opt/api && PYTHONPATH=. python scripts/manager.py '$CMD'"
+  docker exec -it poc-api bash -c "cd /opt/api && PYTHONPATH=. python scripts/manager.py $CMD"
 elif [[ "$CMD" == "psql" ]]; then
-  *TBW*
+  docker exec -it poc-apidb bash -c 'PGPASSWORD=$POSTGRES_PASSWORD psql -d $POSTGRES_DB -U $POSTGRES_USER'
 elif [[ "$CMD" == "python" ]]; then
-  docker exec -it poc-api bash -c "cd /opt/api && PYTHONPATH=. python -i scripts/shell.py"
+  docker exec -it poc-api bash -c 'cd /opt/api && PYTHONPATH=. python scripts/manager.py shell'
 elif [[ "$CMD" == "rebuild" ]]; then
-  *TBW*
+  docker-compose down && docker-compose up --build --force-recreate
 elif [[ "$CMD" == "rmdb" ]]; then
-	*TBW*
+	docker-compose stop api && docker exec -it poc-apidb bash -c 'PGPASSWORD=$POSTGRES_PASSWORD dropdb $POSTGRES_DB -U $POSTGRES_USER' && docker exec -it poc-apidb bash -c 'PGPASSWORD=$POSTGRES_PASSWORD createdb $POSTGRES_DB -U $POSTGRES_USER'
 elif [[ "$CMD" == "restart" ]]; then
-  *TBW*
+  docker-compose restart -t 10 apidb && docker-compose restart -t 10 api
 elif [[ "$CMD" == "start" ]]; then
   docker-compose up
 elif [[ "$CMD" == "webapp" ]]; then
-  *TBW*
+  cd webapp && yarn start
 fi
