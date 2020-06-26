@@ -1,28 +1,29 @@
-import withRedirectWhenLoggedIn from 'components/hocs/withRedirectWhenLoggedIn'
-import withRequiredLogin from 'components/hocs/withRequiredLogin'
-import Landing from 'components/pages/Landing'
-import Signin from 'components/pages/Signin'
-import Verdict from 'components/pages/Verdict'
-import Verdicts from 'components/pages/Verdicts'
+import withRedirectWhenLoggedIn from "components/hocs/withRedirectWhenLoggedIn";
+import withRequiredLogin from "components/hocs/withRequiredLogin";
+import Landing from "components/pages/Landing";
+import Signin from "components/pages/Signin";
+import Verdict from "components/pages/Verdict";
+import Verdicts from "components/pages/Verdicts";
 
 export default [
   {
     component: Landing,
     exact: true,
-    path: '/',
-    title: 'Landing',
+    path: "/",
+    title: "Landing",
   },
   {
     component: withRedirectWhenLoggedIn(Signin),
     exact: true,
-    path: '/signin',
-    title: 'Signin'
+    path: "/signin",
+    title: "Signin",
   },
   {
     component: withRequiredLogin(Verdict),
     exact: true,
-    path: '/verdicts/:verdictId([A-Za-z0-9]{2,})/appearances/:appearanceId(creation)?',
-    title: 'Verdict Create Appearance',
+    path:
+      "/verdicts/:verdictId([A-Za-z0-9]{2,})/appearances/:appearanceId(creation)?",
+    title: "Verdict Create Appearance",
   },
   {
     component: Verdict,

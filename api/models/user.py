@@ -20,10 +20,10 @@ class User(ApiHandler,
     password            = Column(LargeBinary(60), nullable=False)
 
     def check_password(self, passwordToCheck):
-        return *TBW*
+        return bcrypt.checkpw(passwordToCheck.encode('utf8'), self.password)
 
     def get_id(self):
-        return *TBW*
+        return self.id
 
     def is_active(self):
         return True
@@ -33,4 +33,4 @@ class User(ApiHandler,
 
     def set_password(self, newpass):
         self.clearTextPassword = newpass
-        self.password = bcrypt.hashpw(*TBW*, *TBW*)
+        self.password = bcrypt.hashpw(newpass.encode('utf8'), bcrypt.gensalt())

@@ -15,6 +15,7 @@ def delete_user_session(user_id: int, session_uuid: UUID):
     session = UserSession.query \
         .filter_by(userId=user_id, uuid=session_uuid) \
         .first()
+    print('session is {}'.format(session))
     ApiHandler.delete(session)
 
 

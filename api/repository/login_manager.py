@@ -2,7 +2,7 @@ import uuid
 from typing import Iterable
 from werkzeug.local import LocalProxy
 from flask import current_app as app, jsonify, session
-from flask_login import login_user
+from flask_login import LoginManager, login_user
 from sqlalchemy_api_handler import ApiErrors, as_dict
 from sqlalchemy_api_handler import ApiHandler
 
@@ -11,6 +11,9 @@ from repository.user_sessions import delete_user_session, \
                                      existing_user_session, \
                                      register_user_session
 from repository.users import get_user_with_credentials
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 
 @as_dict.register(LocalProxy)
@@ -27,7 +30,7 @@ def get_user_with_id(user_id):
     session.permanent = True
     session_uuid = session.get('session_uuid')
     if existing_user_session(user_id, session_uuid):
-        return User.query.get(*TBW*)
+        return User.query.get(user_id)  # *TBW*
     return None
 
 
@@ -37,7 +40,7 @@ def get_user_with_request(request):
     if not auth:
         return None
     user = get_user_with_credentials(auth.username, auth.password)
-    login_user(*TBW*, remember=True)
+    login_user(user, remember=True)  # *TBW*
     stamp_session(user)
     return user
 

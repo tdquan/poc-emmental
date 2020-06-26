@@ -13,13 +13,11 @@ from models.content import Content
 @app.route('/appearances', methods=['POST'])
 @login_required
 def post_appearance():
-
-    content = Content.create_or_modify({'url': request.json['url']}, search_by='url')
-
+    content = Content.create_or_modify({'url': request.json['quotedUrl']}, search_by='url')
     appearance = Appearance(
-        quotedClaimId=*TBW*,
+        quotedClaimId=request.json['quotedClaimId'],
         quotingContent=content,
-        stance=getattr(StanceType, *TBW*),
+        stance=getattr(StanceType, request.json['quotedStance']),
         testifier=current_user._get_current_object()
     )
 

@@ -24,6 +24,7 @@ def setup(flask_app,
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('POSTGRES_URL')
     flask_app.config['ENV'] = os.environ.get('FLASK_ENV') or 'development'
     flask_app.config['PORT'] = os.environ.get('PORT')
+    flask_app.secret_key = os.environ.get('SECRET_KEY')
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = flask_app.config['ENV'] == 'production'
 
     db.init_app(flask_app)
@@ -34,7 +35,7 @@ def setup(flask_app,
     @flask_app.teardown_request
     def remove_db_session(exc):
         try:
-            logger.info(exc)
+            logger.info('Teardown request: {exc} - {file}'.format(exc=exc, file=__name__))
         except AttributeError:
             logger.error('AttributeError at {file}'.format(file=__name__))
 

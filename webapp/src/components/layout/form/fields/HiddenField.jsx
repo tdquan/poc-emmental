@@ -1,12 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Field } from 'react-final-form'
+import React from "react";
+import PropTypes from "prop-types";
+import { Field } from "react-final-form";
 
-import FieldError from '../FieldError'
+import FieldError from "../FieldError";
 
-
-const noop = () => {}
-
+const noop = () => {};
 
 const _ = ({ name, validator }) => (
   <Field
@@ -19,15 +17,15 @@ const _ = ({ name, validator }) => (
       </>
     )}
   />
-)
+);
 
 _.defaultProps = {
   validator: noop,
-}
+};
 
 _.propTypes = {
   name: PropTypes.string.isRequired,
   validator: PropTypes.func,
-}
+};
 
-export default _
+export default _;

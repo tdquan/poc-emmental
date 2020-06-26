@@ -1,41 +1,48 @@
-import React, { useEffect, useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { requestData } from 'redux-thunk-data'
+import React, { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { requestData } from "redux-thunk-data";
 
-import HiddenField from 'components/layout/form/fields/HiddenField'
-import SelectField from 'components/layout/form/fields/SelectField'
-import TextField from 'components/layout/form/fields/TextField'
-
+import HiddenField from "components/layout/form/fields/HiddenField";
+import SelectField from "components/layout/form/fields/SelectField";
+import TextField from "components/layout/form/fields/TextField";
 
 export default () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-
-  const stanceTypes = useSelector(state => state.data.stanceTypes)
-  const stanceOptions = useMemo(() => (stanceTypes || []).map(stanceType => ({
-    label: stanceType.value.label,
-    value: stanceType.key
-  })), [stanceTypes])
+  const stanceTypes = useSelector((state) => state.data.stanceTypes);
+  const stanceOptions = useMemo(
+    () =>
+      (stanceTypes || []).map((stanceType) => ({
+        label: stanceType.value.label,
+        value: stanceType.key,
+      })),
+    [stanceTypes]
+  );
 
   useEffect(() => {
-    dispatch(requestData({ apiPath: '/stanceTypes' }))
-  }, [dispatch])
-
+    dispatch(requestData({ apiPath: "/stanceTypes" }));
+  }, [dispatch]);
 
   return (
     <div className="fields">
       <div>
-        <HiddenField
-          name="quotedClaimId"
-          type="hidden"
-        />
+        <HiddenField name="quotedClaimId" type="hidden" />
         <TextField
-          *TBW*
+          id="quotedUrl"
+          name="quotedUrl"
+          type="text"
+          label="URL"
+          placeholder="URL"
+          required
         />
         <SelectField
-          *TBW*
+          label="Stance"
+          name="quotedStance"
+          options={stanceOptions}
+          placeholder="Quoted Stance"
+          required
         />
       </div>
     </div>
-  )
-}
+  );
+};

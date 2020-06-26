@@ -12,7 +12,10 @@ const _ = ({ children }) => (
       <meta name="theme-color" content="#ffffff" />
       <meta
         httpEquiv="Content-Security-Policy"
-        content="default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+        content="default-src 'self' blob: data: https: http: gap://ready 'unsafe-inline'
+                'unsafe-eval';
+                style-src 'self' 'unsafe-inline';
+                connect-src 'self' https: http: ws://localhost:3000 wss://web-local:3000"
       />
       <title>Poc Webapp</title>
     </Helmet>

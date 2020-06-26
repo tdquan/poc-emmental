@@ -4,6 +4,8 @@ from sqlalchemy_api_handler import ApiHandler
 
 from utils.db import Model
 
+__model__ = 'UserSession'
+
 
 class UserSession(ApiHandler,
                   Model):

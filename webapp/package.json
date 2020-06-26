@@ -7,18 +7,22 @@
   },
   "dependencies": {
     "classnames": "2.2.5",
+    "final-form": "^4.20.0",
     "prop-types": "^15.7.2",
-    "re-reselect": "^2.1.0",
+    "re-reselect": "^4.0.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-final-form": "^6.5.0",
     "react-helmet": "^5.2.1",
     "react-infinite-scroller": "^1.2.4",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
+    "redux-react-modals": "^1.3.1",
     "redux-thunk": "^2.3.0",
     "redux-thunk-data": "1.10.5",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "with-react-redux-login": "^1.14.4"
   },
   "devDependencies": {
     "eslint-plugin-jest": "^23.0.5",

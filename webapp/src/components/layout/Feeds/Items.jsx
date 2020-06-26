@@ -5,24 +5,41 @@ import InfiniteScroll from "react-infinite-scroller";
 import {
   getStateKeyFromConfig,
   requestData,
-  selectEntitiesByKeyAndActivityTags,
+  // selectEntitiesByKeyAndActivityTags,
 } from "redux-thunk-data";
+
+import { createCachedSelector } from "re-reselect";
 
 import { getItemsActivityTagFromConfig } from "./Controls";
 
 const REACHABLE_THRESHOLD = -10;
 const UNREACHABLE_THRESHOLD = -10000;
 
+const mapArgsToCacheKey = (state, key, tags) => {
+  return `${key} ${tags.map((tag) => tag).join(" ")}`;
+};
+
+const selectEntitiesByKeyAndActivityTags = createCachedSelector(
+  (state, key) => state.data[key],
+  (state, key, tags) => tags,
+  (entities, tags) => {
+    if (!entities) return;
+    const tagsLength = tags.length;
+    return entities.filter(
+      (entity) =>
+        tagsLength === entity.__ACTIVITIES__.length &&
+        tags.every((tag) => entity.__ACTIVITIES__.includes(tag))
+    );
+  }
+)(mapArgsToCacheKey);
+
 const selectItems = (state, config) =>
   selectEntitiesByKeyAndActivityTags(state, getStateKeyFromConfig(config), [
     getItemsActivityTagFromConfig(config),
   ]);
 
-const selectRequest = (state, config) => {
-  console.log(state);
-  console.log(state.requests);
+const selectRequest = (state, config) =>
   state.requests[getItemsActivityTagFromConfig(config)];
-};
 
 const _ = ({ cols, config, renderItem }) => {
   const dispatch = useDispatch();
